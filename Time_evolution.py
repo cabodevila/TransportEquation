@@ -167,8 +167,8 @@ class Evolution():
             integrals = open('integrals.txt', 'a')
             stats = open('stats.txt', 'a')
 
-            integrals.write('%.16f %.16f %.16f\n' %(Ia, Ib, T_star))
-            stats.write('%.16f %.16f %.16f\n' %(number, energy, entropy))
+            integrals.write('%.16e %.16e %.16e\n' %(Ia, Ib, T_star))
+            stats.write('%.16e %.16e %.16e\n' %(number, energy, entropy))
 
             integrals.close()
             stats.close()
