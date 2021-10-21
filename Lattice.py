@@ -19,7 +19,7 @@ class Lattice():
         self.pmax = pmax
         self.size = size
 
-        self.lattice = np.logspace(pmin, pmax, size)
+        self.lattice = np.linspace(pmin, pmax, size)
         self.len_lattice = len(self.lattice)
         self.p_lattice = np.array([(self.lattice[i] + self.lattice[i+1]) / 2 for i in range(self.len_lattice - 1)])
 
