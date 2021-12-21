@@ -248,23 +248,23 @@ class Evolution():
 
         if iter % 10000 == 0:
 
-            def thermal(self, p, mu, T):
+            def thermal(p, mu, T):
                 return 1 / (np.exp((p - mu) / T) - 1)
 
             plt.clf()
 
-            plt.plot(self.lattice.get_p_lattice(), self.Jp_*1e3, 'r.-')
+            plt.plot(self.lattice.get_p_lattice(), self.Jp_*1e3, 'r.-', label='Current')
             plt.plot(self.lattice.get_lattice(), self.lattice.get_lattice() * self.function, 'b.', label='Distribution')
 
             alpha, T_theo, mu_theo = cal.solve(-0.2, Qs=self.qs)
-            plt.plot(self.lattice.get_lattice(), self.lattice.get_lattice() * self.thermal(self.lattice.get_lattice(), mu_theo, T_theo), 'k--', label='Theoretical distribution')
+            plt.plot(self.lattice.get_lattice(), self.lattice.get_lattice() * thermal(self.lattice.get_lattice(), mu_theo, T_theo), 'k--', label='Theoretical distribution')
 
             plt.xscale('log')
 
             stats = np.loadtxt('stats.txt')
             energy = stats[:,1]
             plt.grid()
-            plt.legend(loc='upper right', title='Iteration: %i\nMinimum = %e\nEnergy difference = %e' %(iter, min(self.function), energy[-1] - energy[0]))
+            plt.legend(loc='upper right', title='Iteration: %i' %iter)
             plt.pause(0.1)
 
         return
